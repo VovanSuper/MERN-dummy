@@ -1,0 +1,46 @@
+/* eslint-disable linebreak-style */
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    'jest/globals': true,
+    'cypress/globals': true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'airbnb',
+    'plugin:prettier/recommended',
+    'plugin:cypress/recommended',
+    'plugin:chai-friendly/recommended',
+  ],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
+  parser: 'babel-eslint',
+  plugins: ['react', 'jest', 'cypress', 'chai-friendly'],
+  rules: {
+    'no-unused-vars': ['warn', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
+    'react/no-children-prop': 'warn',
+    'react/jsx-wrap-multilines': 'off',
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+    'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect': 'error',
+    'linebreak-style': 'off',
+    'no-extra-boolean-cast': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'import/no-extraneous-dependencies': ['warn', { devDependencies: true, optionalDependencies: false, peerDependencies: false }],
+    'cypress/no-assigning-return-values': 'error',
+    'cypress/no-unnecessary-waiting': 'error',
+    'cypress/assertion-before-screenshot': 'warn',
+    'cypress/no-force': 'warn',
+    'cypress/no-async-tests': 'error',
+  },
+};

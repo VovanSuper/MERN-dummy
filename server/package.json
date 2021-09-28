@@ -1,0 +1,39 @@
+{
+  "name": "mern-dummy-server",
+  "version": "0.0.1",
+  "description": "Simple server for mern-dummy app",
+  "license": "GPL-3.0",
+  "keywords": [
+    "React",
+    "Mongo",
+    "mern",
+    "API",
+    "React Hooks",
+    "Redux",
+    "React-redux",
+    "useState"
+  ],
+  "author": {
+    "name": "Vladimir Ovsyukov",
+    "email": "vovansuper@mail.ru"
+  },
+  "engines": {
+    "node": ">=14.10.1",
+    "npm": ">=6.11.1"
+  },
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^4.1.2",
+    "nodemon": "^2.0.13"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.1",
+    "cross-env": "^7.0.3"
+  }
+}

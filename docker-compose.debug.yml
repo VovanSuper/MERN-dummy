@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  mongo-db:
+    container_name: mongo-db
+    build:
+      context: server
+      dockerfile: ./Dockerfile.mongo
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_DATABASE=${DB_NAME}
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASS}
+    networks:
+      - mern-dummy-net
+
+  api:
+    container_name: api
+    env_file: ./.env
+    build:
+      context: server
+      dockerfile: ./Dockerfile.api
+    volumes:
+      - ./server:/home/node/app
+      - ./server/node_modules:/home/node/app/node_modules
+    restart: unless-stopped
+    ports:
+      - 8088:8088
+    depends_on:
+      - mongo-db
+    networks:
+      - mern-dummy-net
+
+networks:
+  mern-dummy-net:
+    driver: bridge

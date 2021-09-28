@@ -1,0 +1,11 @@
+FROM node:lts-alpine
+LABEL Mainteiner="Vladimir Ovsyukov"
+WORKDIR /usr/src/app
+ENV NODE_ENV production
+COPY --chown=node:node  package.json package-lock.json ./
+RUN npm ci --only=production
+COPY . .
+RUN apk add dumb-init --update-cache
+EXPOSE ${PORT}
+
+CMD [ "dumb-init", "node", "index.js" ]
