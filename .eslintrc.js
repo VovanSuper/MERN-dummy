@@ -21,7 +21,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   plugins: ['react', 'jest', 'cypress', 'chai-friendly'],
   rules: {
     'no-unused-vars': ['warn', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
