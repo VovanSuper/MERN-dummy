@@ -40,12 +40,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --config ./client/webpack.config.js --watch",
     "lint-all": "npm run eslint && npm run stylelint",
+    "lint-staged": "lint-staged",
     "eslint": "npx eslint .",
     "eslint-fix": "npx eslint . --fix",
     "stylelint": "npx stylelint \"src/**/*.scss\"",
     "stylelint-fix": "npx stylelint \"src/**/*.scss\" --fix",
     "prettier": "npx prettier --check .",
-    "prettier-fix": "npx prettier --write . --ignore-unknown"
+    "prettier-fix": "npx prettier --write . --ignore-unknown",
+    "postinstall": "husky install",
+    "prepare": "husky install"
   },
   "dependencies": {
     "axios": "^0.23.0",
@@ -97,11 +100,6 @@
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.3.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged"
-    }
-  },
   "lint-staged": {
     "*.(scss|ts|tsx|html|md)": [
       "npx prettier --write"
@@ -111,6 +109,8 @@
     ],
     "*.scss": [
       "npx stylelint --fix"
-    ]
+    ],
+    "*.js": "eslint --cache --fix",
+    "*.css": "stylelint --fix"
   }
 }
