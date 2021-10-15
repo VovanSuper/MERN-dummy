@@ -8,10 +8,10 @@ const client = new MongoClient(url, { auth: { username, password } });
 export const dbCtx = {
   connect: () => client.connect().then(client => ({ Client: client })),
   close: () => client.close().catch(e => console.error('ERROR CLOSING DB .. ', JSON.stringify(e.message || e))),
-  queryCollection: ({ Client, db, collection, query = {} }) =>
+  queryCollection: ({ Client, db, collection, query = {}, filter = { limit: null, skip: null } }) =>
     Client.db(db)
       .collection(collection)
-      .find(query)
+      .find(query, filter)
       .toArray()
       .catch(e => console.error('ERROR QUERYING THE DB .. ', JSON.stringify(e.message || e))),
 };

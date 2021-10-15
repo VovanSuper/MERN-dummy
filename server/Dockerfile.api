@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:lts
 LABEL Mainteiner="Vladimir Ovsyukov (vovansuper@mail.ru)"
 ARG PORT=8088
 RUN mkdir -p /home/node/app
